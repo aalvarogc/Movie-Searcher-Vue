@@ -17,7 +17,7 @@ createApp({
   methods:{
     lanzaPrimeraPeticionPeliculas(){
         this.pagina = 1;
-        this.httpRequest.open("GET", "http://www.omdbapi.com/?apikey=b8d85a5&page="+this.pagina+"&s="+this.movieSearcherInput);
+        this.httpRequest.open("GET", "https://www.omdbapi.com/?apikey=b8d85a5&page="+this.pagina+"&s="+this.movieSearcherInput);
         this.httpRequest.onreadystatechange = this.tratarPrimerasPeliculas;
         this.httpRequest.send();
         this.pagina++;
@@ -38,7 +38,7 @@ createApp({
         }
     },
     lanzaPeticionInformacionPelicula(id){
-        this.httpRequest.open("GET", "http://www.omdbapi.com/?apikey=b8d85a5&i="+id);
+        this.httpRequest.open("GET", "https://www.omdbapi.com/?apikey=b8d85a5&i="+id);
         this.httpRequest.onreadystatechange = this.tratarInformacionPelicula;
         this.httpRequest.send();
     },
@@ -56,7 +56,7 @@ createApp({
         }
     },
     lanzaPeticionPeliculas(){
-        this.httpRequest.open("GET", "http://www.omdbapi.com/?apikey=b8d85a5&page="+this.pagina+"&s="+document.getElementById("artistName").value);
+        this.httpRequest.open("GET", "https://www.omdbapi.com/?apikey=b8d85a5&page="+this.pagina+"&s="+document.getElementById("artistName").value);
         this.httpRequest.onreadystatechange = this.tratarPeliculas;
         this.httpRequest.send();
         this.pagina++;
