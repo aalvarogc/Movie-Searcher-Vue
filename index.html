@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Searcher Vue</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body id="app">
+    <header>
+        <h1>Buscador de películas</h1>
+        <input type="text" id="artistName" placeholder="Cars 2..." v-model="movieSearcherInput" @keyup.enter="lanzaPrimeraPeticionPeliculas()">
+    </header>
+    <div id="container" :class="{containerFlex : activeSearch}">
+        <div id="pelis">
+            <figure class="film" v-for="film in films" @click="lanzaPeticionInformacionPelicula(film.imdbID)">
+                <img :src="film.Poster" alt="">
+                <figcaption>{{ film.Title }}</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div :class="[{showLight : activeLightBox}, 'lightbox']">
+        <img src="close.svg" id="close" @click="activeLightBox = false">
+        <div id="infoPeli">
+            <img :src="filmInformation.Poster" id="filmInformation.Title" alt="">
+            <div class="filmInfo">
+                <p id="release">{{ filmInformation.Released }}</p>
+                <p id="genre">{{ filmInformation.Genre }}</p>
+                <p id="rating">{{ filmInformation.imdbRating }} / 10</p>
+                <p id="director">{{ filmInformation.Director }}</p>
+                <p id="actors">{{ filmInformation.Actors }}</p>
+                <hr>
+                <p id="plot">{{ filmInformation.Plot }}</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
