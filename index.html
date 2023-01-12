@@ -15,10 +15,13 @@
     </header>
     <div id="container" :class="{containerFlex : activeSearch}">
         <div id="pelis">
-            <figure class="film" v-for="film in films" @click="lanzaPeticionInformacionPelicula(film.imdbID)">
+            <figure :class="[{emptyPelisDiv : moviesNotFounded}, 'film']" v-for="film in films" @click="lanzaPeticionInformacionPelicula(film.imdbID)">
                 <img :src="film.Poster" alt="">
                 <figcaption>{{ film.Title }}</figcaption>
             </figure>
+
+            <!-- MOVIE NOT FOUNDED -->
+            <span id="wrongText" :class="{appearWrongText : moviesNotFounded}">No se ha encontrado ninguna película.</span>
         </div>
     </div>
     <div :class="[{showLight : activeLightBox}, 'lightbox']">

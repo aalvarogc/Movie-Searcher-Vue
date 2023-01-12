@@ -10,7 +10,8 @@ createApp({
         httpRequest: new XMLHttpRequest(),
         movieSearcherInput: "",
         activeSearch: false,
-        activeLightBox: false
+        activeLightBox: false,
+        moviesNotFounded: false
     }
   },
   // MÉTODOS
@@ -25,14 +26,13 @@ createApp({
     tratarPrimerasPeliculas(){
         if(this.httpRequest.readyState === XMLHttpRequest.DONE){
             if(this.httpRequest.status === 200){
-                console.log(this.datos)
                 this.datos = JSON.parse(this.httpRequest.responseText);
-                console.log(this.datos)
                 this.activeSearch = true;
                 if(this.datos.Response != "False"){
                     this.films = this.datos.Search;
+                    this.moviesNotFounded = false;
                 }else{
-                    return false;
+                    this.moviesNotFounded = true;
                 }
             }
         }
@@ -67,7 +67,6 @@ createApp({
                 this.datos = JSON.parse(this.httpRequest.responseText);
                 if(this.datos.Response != "False"){
                     this.films = this.films.concat(this.datos.Search);
-                    console.log(this.films)
                 }else{
                     return false;
                 }

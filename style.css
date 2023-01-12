@@ -116,9 +116,14 @@ h1{
 }
 
 #wrongText{
+    display: none;
     font-size: 2em;
     color: white;
     text-align: center;
+}
+
+.appearWrongText{
+    display: block !important;
 }
 
 #pelis{
@@ -135,6 +140,10 @@ h1{
     row-gap: 100px;
     background-color: #202020d3;
     color: white;
+}
+
+.emptyPelisDiv{
+    display: none !important;
 }
 
 .film{
